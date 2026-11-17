@@ -202,6 +202,30 @@ h1, h2, h3, p { margin-top: 0; }
 
 @keyframes card-arrive { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 
+.evolution-section { padding-top: 122px; }
+.evolution-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 18px; }
+.evolution-forms, .evolution-history { display: grid; align-content: start; gap: 14px; }
+.evolution-form, .evolution-list-section { padding: 21px; border: 1px solid var(--border); border-radius: 14px; background: radial-gradient(circle at 0 0, rgba(168,85,247,.07), transparent 55%), var(--surface); }
+.evolution-form { display: flex; flex-direction: column; gap: 9px; }
+.evolution-form h3, .evolution-list-section h3 { margin: 0 0 4px; font-family: var(--font-display); font-size: 15px; font-weight: 700; }
+.evolution-form label { margin-top: 3px; color: #d3d5d0; font-size: 10px; font-weight: 600; }
+.evolution-form input { width: 100%; min-height: 40px; padding: 9px 10px; border: 1px solid var(--border); border-radius: 8px; outline: none; background: #0c0e0c; color: var(--text); font-size: 11px; }
+.evolution-form input:focus { border-color: var(--accent-dark); }
+.evolution-form input::placeholder { color: #666b63; }
+.measurement-fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
+.measurement-fields > div { display: flex; min-width: 0; flex-direction: column; gap: 8px; }
+.evolution-submit { align-self: start; min-height: 40px; margin-top: 1px; font-size: 10px; }
+.evolution-form .form-error { min-height: 0; }
+.evolution-list-section h3 { margin-bottom: 12px; }
+.evolution-list { border-top: 1px solid var(--border); }
+.evolution-entry { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 1px; border-bottom: 1px solid var(--border); }
+.evolution-entry:last-child { border-bottom: 0; }
+.evolution-entry-date { color: var(--muted); font-size: 9px; }
+.evolution-entry-values { margin: 4px 0 0; color: #ded8e3; font-size: 11px; line-height: 1.5; }
+.evolution-empty { margin: 0; padding: 14px 0 3px; color: var(--muted); font-size: 10px; }
+.record-exercise { margin: 0 0 3px; font-family: var(--font-display); font-size: 11px; font-weight: 600; }
+.record-weight { color: #d8b4fe; font-family: var(--font-display); font-size: 13px; white-space: nowrap; }
+
 .progress-section { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 12%; padding-top: 130px; }
 .progress-copy .eyebrow { margin-bottom: 13px; }
 .progress-copy h2 { margin-bottom: 16px; font-size: clamp(32px, 4vw, 47px); }
@@ -255,6 +279,33 @@ h1, h2, h3, p { margin-top: 0; }
 .optional-label { color: #73786f; font-weight: 400; }
 .form-error { min-height: 14px; margin: 0; color: #ff9a8b; font-size: 10px; }
 .form-submit { width: 100%; margin-top: 1px; }
+.suggestion-toggle { display: flex; align-items: center; gap: 7px; cursor: pointer; }
+.workout-dialog .suggestion-toggle input { width: 14px; min-height: 14px; margin: 0; accent-color: var(--accent); }
+.exercise-suggestions { display: flex; flex-direction: column; gap: 8px; padding: 12px; border: 1px solid rgba(168,85,247,.2); border-radius: 10px; background: rgba(168,85,247,.045); }
+.exercise-suggestions[hidden] { display: none; }
+.exercise-suggestions .form-row { gap: 8px; }
+.exercise-suggestions .form-row > div { gap: 6px; }
+.exercise-suggestions label { font-size: 9px; }
+.workout-dialog .exercise-suggestions select { min-height: 38px; padding: 8px; font-size: 10px; }
+.suggestion-hint { margin: 0; color: var(--muted); font-size: 9px; line-height: 1.5; }
+.suggestion-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.suggestion-item { padding: 6px 8px; border: 1px solid rgba(168,85,247,.3); border-radius: 999px; background: rgba(168,85,247,.09); color: #e4d1f6; cursor: pointer; font-size: 9px; }
+.suggestion-item:hover:not(:disabled) { border-color: var(--accent); background: rgba(168,85,247,.2); }
+.suggestion-item:disabled { color: #a78bbd; cursor: default; opacity: .8; }
+
+.install-section { display: flex; align-items: center; justify-content: space-between; gap: 22px; margin-top: 104px; padding: 20px 22px; border: 1px solid var(--border); border-radius: 14px; background: linear-gradient(105deg, rgba(168,85,247,.12), rgba(168,85,247,.025) 65%, transparent); }
+.install-section .eyebrow { margin-bottom: 7px; }
+.install-description { margin: 0; color: #c5bdcc; font-size: 11px; line-height: 1.6; }
+.install-status { margin: 5px 0 0; color: var(--muted); font-size: 9px; }
+.install-button { min-width: 190px; min-height: 42px; border-color: rgba(168,85,247,.35); color: #e4d1f6; white-space: nowrap; }
+.install-button span { margin-left: 8px; color: var(--accent); }
+.install-button[hidden] { display: none; }
+.install-dialog { width: min(420px, calc(100% - 28px)); padding: 25px; border: 1px solid rgba(255,255,255,.12); border-radius: 16px; background: #111311; color: var(--text); box-shadow: 0 25px 100px rgba(0,0,0,.65); }
+.install-dialog::backdrop { background: rgba(0,0,0,.75); backdrop-filter: blur(5px); }
+.install-dialog .dialog-heading { margin-bottom: 14px; }
+.install-dialog .dialog-heading h2 { max-width: 290px; font-size: 20px; line-height: 1.3; }
+.install-instructions { margin: 0; color: #b7bbb2; font-size: 12px; line-height: 1.8; }
+.close-install-dialog { width: 32px; height: 32px; border: 1px solid var(--border); border-radius: 50%; background: transparent; color: #aaa; cursor: pointer; font-size: 20px; line-height: 1; }
 
 @media (min-width: 1400px) {
   .hero { min-height: 700px; }
@@ -270,6 +321,7 @@ h1, h2, h3, p { margin-top: 0; }
   .section-wrap, .site-footer { width: 88%; }
   .week-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .day-card { min-height: 250px; }
+  .evolution-grid { grid-template-columns: 1fr 1fr; }
   .progress-section { gap: 7%; }
   .stats-panel { gap: 14px; padding: 21px; }
 }
@@ -311,6 +363,13 @@ h1, h2, h3, p { margin-top: 0; }
   .exercise-preview li { font-size: 8px; }
   .day-actions { gap: 5px; }
   .plan-button, .log-button { font-size: 8px; }
+  .evolution-section { padding-top: 91px; }
+  .evolution-grid { grid-template-columns: 1fr; }
+  .evolution-form, .evolution-list-section { padding: 17px; }
+  .measurement-fields { gap: 6px; }
+  .measurement-fields > div { gap: 6px; }
+  .measurement-fields label { min-height: 25px; line-height: 1.4; }
+  .measurement-fields input { padding: 8px 6px; font-size: 10px; }
   .progress-section { grid-template-columns: 1fr; gap: 25px; padding-top: 91px; }
   .progress-copy h2 { font-size: 37px; }
   .progress-copy > p:last-child { max-width: 360px; font-size: 11px; }
@@ -318,6 +377,8 @@ h1, h2, h3, p { margin-top: 0; }
   .stat-value { font-size: 39px; }
   .stat-label { font-size: 9px; }
   .history-section { padding-top: 90px; }
+  .install-section { align-items: stretch; flex-direction: column; gap: 13px; margin-top: 76px; padding: 17px; }
+  .install-button { width: 100%; }
   .history-heading { margin-bottom: 16px; }
   .history-heading h2 { font-size: 26px; }
   .closing-banner { gap: 11px; margin-top: 76px; padding: 18px 14px; }

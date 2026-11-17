@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#090a09">
   <meta name="description" content="Seu espaço para planejar treinos, acompanhar sua consistência e evoluir um dia de cada vez.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Ritmo">
+  <link rel="apple-touch-icon" href="icons/ritmo-192.png">
+  <link rel="manifest" href="manifest.webmanifest">
   <title>Ritmo — seu treino, no seu tempo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,6 +25,7 @@
     <nav class="main-nav" aria-label="Navegação principal">
       <a class="nav-link active" href="#semana">Minha semana</a>
       <a class="nav-link" href="#historico">Histórico</a>
+      <a class="nav-link" href="#evolucao">Minha evolução</a>
     </nav>
     <a class="header-cta" href="#semana">Bora treinar <span aria-hidden="true">↗</span></a>
   </header>
@@ -62,6 +67,55 @@
       <div class="week-grid" id="week-grid" aria-label="Plano de treinos da semana"></div>
     </section>
 
+    <section class="evolution-section section-wrap" id="evolucao" aria-labelledby="evolution-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">SEU PROGRESSO, SEM COMPARAÇÃO</p>
+          <h2 id="evolution-title">Minha evolução<span class="heading-period">.</span></h2>
+          <p class="section-subtitle">Registre suas medidas e comemore cada novo recorde.</p>
+        </div>
+      </div>
+      <div class="evolution-grid">
+        <div class="evolution-forms">
+          <form class="evolution-form" id="measurement-form">
+            <h3>Registrar medidas</h3>
+            <label for="measurement-date">Data</label>
+            <input id="measurement-date" name="date" type="date" required>
+            <div class="measurement-fields">
+              <div><label for="measurement-weight">Peso <span class="optional-label">· kg</span></label><input id="measurement-weight" name="weight" type="number" min="0.1" max="500" step="0.1" placeholder="Ex.: 72,5"></div>
+              <div><label for="measurement-height">Altura <span class="optional-label">· cm</span></label><input id="measurement-height" name="height" type="number" min="30" max="300" step="0.1" placeholder="Ex.: 175"></div>
+              <div><label for="measurement-body-fat">Gordura corporal <span class="optional-label">· %</span></label><input id="measurement-body-fat" name="bodyFat" type="number" min="0" max="100" step="0.1" placeholder="Ex.: 18"></div>
+            </div>
+            <p class="form-error" id="measurement-error" role="alert"></p>
+            <button class="primary-button evolution-submit" type="submit">Salvar medidas <span aria-hidden="true">↗</span></button>
+          </form>
+
+          <form class="evolution-form" id="record-form">
+            <h3>Novo recorde de carga</h3>
+            <label for="record-exercise">Exercício</label>
+            <input id="record-exercise" name="exercise" type="text" maxlength="60" placeholder="Ex.: Agachamento livre" required>
+            <div class="form-row">
+              <div><label for="record-weight">Carga <span class="optional-label">· kg</span></label><input id="record-weight" name="weight" type="number" min="0.5" max="2000" step="0.5" placeholder="Ex.: 100" required></div>
+              <div><label for="record-date">Data</label><input id="record-date" name="date" type="date" required></div>
+            </div>
+            <p class="form-error" id="record-error" role="alert"></p>
+            <button class="primary-button evolution-submit" type="submit">Salvar recorde <span aria-hidden="true">↗</span></button>
+          </form>
+        </div>
+
+        <div class="evolution-history">
+          <section class="evolution-list-section" aria-labelledby="measurements-title">
+            <h3 id="measurements-title">Medidas registradas</h3>
+            <div class="evolution-list" id="measurement-list" aria-live="polite"></div>
+          </section>
+          <section class="evolution-list-section" aria-labelledby="records-title">
+            <h3 id="records-title">Recordes de carga</h3>
+            <div class="evolution-list" id="record-list" aria-live="polite"></div>
+          </section>
+        </div>
+      </div>
+    </section>
+
     <section class="progress-section section-wrap" aria-labelledby="progress-title">
       <div class="progress-copy">
         <p class="eyebrow">PEQUENOS PASSOS, GRANDES MUDANÇAS</p>
@@ -94,6 +148,15 @@
       </div>
     </section>
 
+    <section class="install-section section-wrap" aria-label="Instalar o Ritmo no celular">
+      <div>
+        <p class="eyebrow">RITMO SEMPRE À MÃO</p>
+        <p class="install-description">Adicione o Ritmo à tela inicial do celular para abrir como um app.</p>
+        <p class="install-status" id="install-status" role="status"></p>
+      </div>
+      <button class="secondary-button install-button" id="install-app-button" type="button">Adicionar à tela inicial <span aria-hidden="true">↗</span></button>
+    </section>
+
     <section class="closing-banner section-wrap">
       <span class="closing-star" aria-hidden="true">✳</span>
       <p>Seu único limite é o próximo passo.</p>
@@ -106,6 +169,14 @@
     <span>Feito para você, e por você.</span>
     <span>© 2026 · NO SEU TEMPO</span>
   </footer>
+
+  <dialog class="install-dialog" id="install-dialog" aria-labelledby="install-dialog-title">
+    <div class="dialog-heading">
+      <div><p class="eyebrow">RITMO NO SEU CELULAR</p><h2 id="install-dialog-title">Adicionar à tela inicial<span class="heading-period">.</span></h2></div>
+      <button class="close-install-dialog" type="button" aria-label="Fechar">×</button>
+    </div>
+    <p class="install-instructions" id="install-instructions"></p>
+  </dialog>
 
   <dialog class="workout-dialog" id="workout-dialog" aria-labelledby="dialog-title">
     <form id="workout-form">
@@ -121,6 +192,36 @@
       </div>
       <label for="workout-exercises">Exercícios <span class="optional-label">· um por linha</span></label>
       <textarea id="workout-exercises" name="exercises" rows="4" maxlength="1000" placeholder="Supino reto&#10;Tríceps na polia alta"></textarea>
+      <label class="suggestion-toggle" for="show-exercise-suggestions">
+        <input id="show-exercise-suggestions" type="checkbox">
+        Quero ver sugestões de exercícios <span class="optional-label">· opcional</span>
+      </label>
+      <div class="exercise-suggestions" id="exercise-suggestions" hidden>
+        <div class="form-row">
+          <div>
+            <label for="suggestion-muscle">Grupo muscular</label>
+            <select id="suggestion-muscle">
+              <option value="">Escolha uma parte do corpo</option>
+              <option value="peito">Peito</option>
+              <option value="costas">Costas</option>
+              <option value="ombros">Ombros</option>
+              <option value="biceps">Bíceps</option>
+              <option value="triceps">Tríceps</option>
+              <option value="pernas">Pernas</option>
+              <option value="gluteos">Glúteos</option>
+              <option value="abdomen">Abdômen</option>
+            </select>
+          </div>
+          <div>
+            <label for="suggestion-emphasis">Ênfase do dia</label>
+            <select id="suggestion-emphasis" disabled>
+              <option value="">Escolha o grupo primeiro</option>
+            </select>
+          </div>
+        </div>
+        <p class="suggestion-hint" id="suggestion-hint" aria-live="polite">As sugestões são opcionais; você continua livre para escolher seus exercícios.</p>
+        <div class="suggestion-list" id="suggestion-list"></div>
+      </div>
       <label for="workout-notes">Anotação <span class="optional-label">· opcional</span></label>
       <textarea id="workout-notes" name="notes" rows="3" maxlength="240" placeholder="Como você se sentiu? Alguma evolução?"></textarea>
       <p class="form-error" id="form-error" role="alert"></p>
