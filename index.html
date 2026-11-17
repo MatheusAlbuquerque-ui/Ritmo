@@ -54,57 +54,12 @@
         <div>
           <p class="eyebrow">SEU PLANO, DO SEU JEITO</p>
           <h2 id="week-title">Semana de treino<span class="heading-period">.</span></h2>
-          <p class="section-subtitle">Cinco dias para se movimentar. Um dia de cada vez.</p>
+          <p class="section-subtitle">Escolha os dias, os grupos musculares e os exercícios do seu jeito.</p>
         </div>
         <button class="text-button" type="button" id="new-workout-button">＋ Novo treino</button>
       </div>
 
-      <div class="week-grid" id="week-grid" aria-label="Plano de treinos da semana">
-        <article class="day-card" data-day="Segunda">
-          <div class="day-card-top"><span class="day-name">SEG</span><span class="day-index">01</span></div>
-          <span class="day-icon" aria-hidden="true">↗</span>
-          <h3>Peito & tríceps</h3>
-          <p>Força · membros superiores</p>
-          <button type="button" class="log-button">Registrar treino <span aria-hidden="true">→</span></button>
-          <span class="day-complete" aria-live="polite"></span>
-        </article>
-        <article class="day-card" data-day="Terça">
-          <div class="day-card-top"><span class="day-name">TER</span><span class="day-index">02</span></div>
-          <span class="day-icon" aria-hidden="true">↗</span>
-          <h3>Costas & bíceps</h3>
-          <p>Força · membros superiores</p>
-          <button type="button" class="log-button">Registrar treino <span aria-hidden="true">→</span></button>
-          <span class="day-complete" aria-live="polite"></span>
-        </article>
-        <article class="day-card" data-day="Quarta">
-          <div class="day-card-top"><span class="day-name">QUA</span><span class="day-index">03</span></div>
-          <span class="day-icon" aria-hidden="true">↗</span>
-          <h3>Pernas & glúteos</h3>
-          <p>Força · membros inferiores</p>
-          <button type="button" class="log-button">Registrar treino <span aria-hidden="true">→</span></button>
-          <span class="day-complete" aria-live="polite"></span>
-        </article>
-        <article class="day-card" data-day="Quinta">
-          <div class="day-card-top"><span class="day-name">QUI</span><span class="day-index">04</span></div>
-          <span class="day-icon" aria-hidden="true">↗</span>
-          <h3>Ombros & abdômen</h3>
-          <p>Força · estabilidade</p>
-          <button type="button" class="log-button">Registrar treino <span aria-hidden="true">→</span></button>
-          <span class="day-complete" aria-live="polite"></span>
-        </article>
-        <article class="day-card" data-day="Sexta">
-          <div class="day-card-top"><span class="day-name">SEX</span><span class="day-index">05</span></div>
-          <span class="day-icon" aria-hidden="true">↗</span>
-          <h3>Full body</h3>
-          <p>Condicionamento · corpo todo</p>
-          <button type="button" class="log-button">Registrar treino <span aria-hidden="true">→</span></button>
-          <span class="day-complete" aria-live="polite"></span>
-        </article>
-        <article class="rest-card">
-          <span class="rest-icon" aria-hidden="true">☼</span>
-          <div><span class="rest-label">SÁB · DOM</span><h3>Descanso também é treino.</h3></div>
-        </article>
-      </div>
+      <div class="week-grid" id="week-grid" aria-label="Plano de treinos da semana"></div>
     </section>
 
     <section class="progress-section section-wrap" aria-labelledby="progress-title">
@@ -115,7 +70,7 @@
       </div>
       <div class="stats-panel">
         <div class="stat-item">
-          <span class="stat-value" id="weekly-count">0<span>/5</span></span>
+          <span class="stat-value" id="weekly-count">0</span>
           <span class="stat-label">treinos nesta semana</span>
         </div>
         <div class="stat-divider"></div>
@@ -158,16 +113,21 @@
         <div><p class="eyebrow">MAIS UM PASSO PRA VOCÊ</p><h2 id="dialog-title">Registrar treino<span class="heading-period">.</span></h2></div>
         <button class="close-dialog" type="button" aria-label="Fechar">×</button>
       </div>
-      <label for="workout-name">Qual foi o treino?</label>
-      <input id="workout-name" name="name" type="text" maxlength="60" placeholder="Ex.: Pernas e glúteos" required>
+      <label for="workout-name">Qual é o foco do treino?</label>
+      <input id="workout-name" name="name" type="text" maxlength="60" placeholder="Ex.: Peito e tríceps" required>
       <div class="form-row">
         <div><label for="workout-day">Dia</label><select id="workout-day" name="day"><option>Segunda</option><option>Terça</option><option>Quarta</option><option>Quinta</option><option>Sexta</option><option>Sábado</option><option>Domingo</option></select></div>
         <div><label for="workout-duration">Duração (min)</label><input id="workout-duration" name="duration" type="number" min="1" max="600" placeholder="45"></div>
       </div>
+      <label for="workout-exercises">Exercícios <span class="optional-label">· um por linha</span></label>
+      <textarea id="workout-exercises" name="exercises" rows="4" maxlength="1000" placeholder="Supino reto&#10;Tríceps na polia alta"></textarea>
       <label for="workout-notes">Anotação <span class="optional-label">· opcional</span></label>
       <textarea id="workout-notes" name="notes" rows="3" maxlength="240" placeholder="Como você se sentiu? Alguma evolução?"></textarea>
       <p class="form-error" id="form-error" role="alert"></p>
-      <button class="primary-button form-submit" type="submit">Salvar meu treino <span aria-hidden="true">↗</span></button>
+      <div class="dialog-actions">
+        <button class="secondary-button" type="submit" name="action" value="plan">Salvar só o plano</button>
+        <button class="primary-button form-submit" type="submit" name="action" value="workout">Registrar treino <span aria-hidden="true">↗</span></button>
+      </div>
     </form>
   </dialog>
 </body>
